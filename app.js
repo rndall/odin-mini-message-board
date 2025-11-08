@@ -1,6 +1,17 @@
 import express from "express"
-const app = express()
+import { fileURLToPath } from "url"
+import { dirname, join } from "path"
+
 import indexRouter from "./routes"
+
+const app = express()
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// ejs
+app.set("views", join(__dirname, "views"))
+app.set("view engine", "ejs")
 
 app.use("/", indexRouter)
 
