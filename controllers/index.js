@@ -5,4 +5,8 @@ async function getIndex(_req, res) {
   res.render("index", { messages })
 }
 
-export { getIndex }
+async function getNew(_req, res) {
+  res.render("form")
+}
+
+export { getIndex, getNew }
