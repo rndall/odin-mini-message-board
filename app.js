@@ -9,6 +9,8 @@ const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+app.use(express.urlencoded({ extended: true }))
+
 // ejs
 app.set("views", join(__dirname, "views"))
 app.set("view engine", "ejs")
