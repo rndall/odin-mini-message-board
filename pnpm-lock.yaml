@@ -14,6 +14,9 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      lucide-static:
+        specifier: ^0.553.0
+        version: 0.553.0
 
 packages:
 
@@ -178,6 +181,9 @@ packages:
     resolution: {integrity: sha512-wpHYzhxiVQL+IV05BLE2Xn34zW1S223hvjtqk0+gsPrwd/8JNLXJgZZM/iPFsYc1xyphF+6M6EvdE5E9MBGkDA==}
     engines: {node: '>=10'}
     hasBin: true
+
+  lucide-static@0.553.0:
+    resolution: {integrity: sha512-HzUDs6+Eq4Tm9N/EvzQT1YzV7rpLF3yn/WSWEw1RLb/yZwUvOo8+0BMIm1p2V+tGlwlcrLnSR9SpSinToNULGA==}
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -500,6 +506,8 @@ snapshots:
       async: 3.2.6
       filelist: 1.0.4
       picocolors: 1.1.1
+
+  lucide-static@0.553.0: {}
 
   math-intrinsics@1.1.0: {}
 
