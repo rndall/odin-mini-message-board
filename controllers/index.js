@@ -16,7 +16,7 @@ async function getNew(_req, res) {
 }
 
 async function createMessage(req, res) {
-  const message = { ...req.body, added: new Date() }
+  const message = { ...req.body, added: new Date(), id: crypto.randomUUID() }
 
   await db.addMessage(message)
 
