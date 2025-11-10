@@ -17,8 +17,12 @@ async function getMessages() {
   return messages
 }
 
+async function getMessageById(messageId) {
+  return messages.find((message) => message.id === messageId)
+}
+
 async function addMessage(message) {
   messages.push(message)
 }
 
-export default { getMessages, addMessage }
+export default { getMessages, getMessageById, addMessage }

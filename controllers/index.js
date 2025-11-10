@@ -11,6 +11,18 @@ async function getIndex(_req, res) {
   res.render("index", { messages })
 }
 
+async function getMessageById(req, res) {
+  const { id } = req.params
+
+  const message = await db.getMessageById(id)
+
+  if (!message) {
+    throw new CustomNotFoundError("Message not found!")
+  }
+
+  res.render("message", { message })
+}
+
 async function getNew(_req, res) {
   res.render("form")
 }
@@ -23,4 +35,4 @@ async function createMessage(req, res) {
   res.redirect("/")
 }
 
-export { getIndex, getNew, createMessage }
+export { getIndex, getMessageById, getNew, createMessage }
