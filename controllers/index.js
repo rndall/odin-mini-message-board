@@ -1,5 +1,6 @@
 import db from "../db.js"
 import CustomNotFoundError from "../errors/CustomNotFoundError.js"
+import { MessagesSquare, Plus } from "lucide-static"
 
 async function getIndex(_req, res) {
   const messages = await db.getMessages()
@@ -8,7 +9,7 @@ async function getIndex(_req, res) {
     throw new CustomNotFoundError("Messages not found!")
   }
 
-  res.render("index", { messages })
+  res.render("index", { messages, MessagesSquare, Plus })
 }
 
 async function getMessageById(req, res) {

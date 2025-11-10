@@ -4,20 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/index.css" />
     <title>Homepage</title>
   </head>
 
   <body>
-    <a href="/new">New Message</a>
+    <header class="header">
+      <div class="container container--header flex">
+        <div class="flex header__heading">
+          <p class="header__icon"><%- MessagesSquare %></p>
+          <h1>Recent Messages</h1>
+        </div>
+        <a class="btn flex header__btn" href="/new"><%- Plus %> New Message</a>
+      </div>
+    </header>
 
-    <ul>
-      <% messages.forEach(message => { %>
-      <a href="<%= message.id %>">
-        <p><%= message.user %></p>
-        <p><%= message.text %></p>
-        <p><%= message.added %></p>
-      </a>
-      <% }) %>
-    </ul>
+    <main>
+      <div class="container">
+        <ul>
+          <% messages.forEach(message => { %>
+          <li>
+            <a href="<%= message.id %>">
+              <p><%= message.user %></p>
+              <p><%= message.text %></p>
+              <p><%= message.added %></p>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </main>
   </body>
 </html>
