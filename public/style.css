@@ -4,6 +4,8 @@
   --text-dark: #a9a9a9;
   --cta-color: #4a90e2;
   --card-color: #1a242e;
+  --form-card: #111825;
+  --form-field-bg: #1f2937;
 }
 
 body {
@@ -32,6 +34,9 @@ body {
   border-radius: 0.5rem;
   padding: 0.75rem 1.5rem;
   font-weight: bold;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 .card {
