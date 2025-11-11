@@ -1,6 +1,6 @@
 import db from "../db.js"
 import CustomNotFoundError from "../errors/CustomNotFoundError.js"
-import { MessagesSquare, Plus } from "lucide-static"
+import { MessagesSquare, Plus, ArrowLeft } from "lucide-static"
 
 async function getIndex(_req, res) {
   const messages = await db.getMessages()
@@ -18,7 +18,12 @@ async function getIndex(_req, res) {
     return { ...m, added: formatted }
   })
 
-  res.render("index", { messages: messagesFormattedDate, MessagesSquare, Plus })
+  res.render("index", {
+    messages: messagesFormattedDate,
+    MessagesSquare,
+    Plus,
+    details: false,
+  })
 }
 
 async function getMessageById(req, res) {
@@ -30,7 +35,15 @@ async function getMessageById(req, res) {
     throw new CustomNotFoundError("Message not found!")
   }
 
-  res.render("message", { message })
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
+    timeStyle: "short",
+  })
+  let formattedTimestamp = formatter.format(new Date(message.added))
+  formattedTimestamp = formattedTimestamp.replace(", ", " at ")
+  const messageFormattedTimestamp = { ...message, added: formattedTimestamp }
+
+  res.render("message", { message: messageFormattedTimestamp, ArrowLeft })
 }
 
 async function getNew(_req, res) {

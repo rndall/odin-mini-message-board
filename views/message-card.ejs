@@ -1,4 +1,18 @@
 <li>
+  <% if (details) { %>
+  <div>
+    <div class="card">
+      <div>
+        <div class="card__header flex">
+          <h2 class="card__title"><%= message.user %></h2>
+        </div>
+        <p class="text--dark">Posted on <%= message.added %></p>
+      </div>
+      <hr class="divider" />
+      <p><%= message.text %></p>
+    </div>
+  </div>
+  <% } else { %>
   <a href="<%= message.id %>">
     <div class="card">
       <div class="card__header flex">
@@ -8,4 +22,5 @@
       <p class="text--dark"><%= message.text %></p>
     </div>
   </a>
+  <% } %>
 </li>
