@@ -9,7 +9,16 @@ async function getIndex(_req, res) {
     throw new CustomNotFoundError("Messages not found!")
   }
 
-  res.render("index", { messages, MessagesSquare, Plus })
+  const messagesFormattedDate = messages.map((m) => {
+    const date = new Date(m.added)
+    const formatted = date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    })
+    return { ...m, added: formatted }
+  })
+
+  res.render("index", { messages: messagesFormattedDate, MessagesSquare, Plus })
 }
 
 async function getMessageById(req, res) {

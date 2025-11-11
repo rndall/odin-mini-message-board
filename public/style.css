@@ -1,6 +1,7 @@
 :root {
   --background-color: #101922;
   --text-color: #e0e0e0;
+  --text-dark: #a9a9a9;
   --cta-color: #4a90e2;
   --card-color: #1a242e;
 }
@@ -31,6 +32,30 @@ body {
   border-radius: 0.5rem;
   padding: 0.75rem 1.5rem;
   font-weight: bold;
+}
+
+.card {
+  background-color: var(--card-color);
+  padding: 2.25rem 2.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.card__header {
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.card__title {
+  font-weight: bold;
+}
+
+.card__timestamp {
+  font-size: 0.875rem;
+}
+
+.text--dark {
+  color: var(--text-dark);
 }
 
 @media (width >= 48rem) {

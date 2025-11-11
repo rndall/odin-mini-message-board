@@ -16,21 +16,18 @@
           <p class="header__icon"><%- MessagesSquare %></p>
           <h1>Recent Messages</h1>
         </div>
-        <a class="btn flex header__btn" href="/new"><%- Plus %> New Message</a>
+        <a class="btn flex header__btn" href="/new">
+          <p class="header__btn-icon"><%- Plus %></p>
+          <p class="header__btn-text">New Message</p>
+        </a>
       </div>
     </header>
 
     <main>
       <div class="container">
-        <ul>
+        <ul class="messages flex">
           <% messages.forEach(message => { %>
-          <li>
-            <a href="<%= message.id %>">
-              <p><%= message.user %></p>
-              <p><%= message.text %></p>
-              <p><%= message.added %></p>
-            </a>
-          </li>
+            <%- include('message-card', { message }) %>
           <% }) %>
         </ul>
       </div>
