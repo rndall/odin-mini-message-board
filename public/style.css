@@ -37,6 +37,11 @@ body {
   border: none;
   color: var(--text-color);
   cursor: pointer;
+  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+}
+
+.btn:hover {
+  opacity: 0.8;
 }
 
 .card {
