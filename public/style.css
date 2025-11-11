@@ -58,6 +58,12 @@ body {
   color: var(--text-dark);
 }
 
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (width >= 48rem) {
   .container {
     --max-width: 48rem;
