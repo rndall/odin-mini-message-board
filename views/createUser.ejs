@@ -14,28 +14,29 @@
       <div class="form-card card">
         <h1>Post a New Message</h1>
         <form class="flex form" method="POST" action="/new">
-          <label class="flex form__label" for="user">
-            Your Name
+          <div class="flex">
+            <label class="flex form__label" for="user"> Your Name </label>
             <input
               class="form__input"
-              required
               id="user"
               name="user"
               type="text"
               placeholder="Enter your name"
+              value="<%= message?.user %>"
             />
-          </label>
-          <label class="flex form__label" for="text">
-            Your Message
+            <%- include("partials/errors.ejs", { field: "user"}) %>
+          </div>
+          <div class="flex">
+            <label class="flex form__label" for="text"> Your Message </label>
             <textarea
               placeholder="What's on your mind?"
               class="form__input"
-              required
               id="text"
               name="text"
               rows="6"
-            ></textarea>
-          </label>
+            ><%= message?.text %></textarea>
+            <%- include("partials/errors.ejs", { field: "text"}) %>
+          </div>
           <button type="submit" class="btn">Submit</button>
         </form>
       </div>

@@ -1,6 +1,12 @@
 import db from "../db/queries.js"
 import CustomNotFoundError from "../errors/CustomNotFoundError.js"
+import { body, validationResult, matchedData } from "express-validator"
 import { MessagesSquare, Plus, ArrowLeft } from "lucide-static"
+
+const validateUser = [
+  body("user").trim().notEmpty().withMessage("Name is required."),
+  body("text").trim().notEmpty().withMessage("Message is required."),
+]
 
 async function getIndex(_req, res) {
   const messages = await db.getAllMessages()
@@ -47,13 +53,23 @@ async function getMessageById(req, res) {
 }
 
 async function getNew(_req, res) {
-  res.render("form")
+  res.render("createUser")
 }
 
-async function createMessage(req, res) {
-  await db.insertMessage(req.body)
-
-  res.redirect("/")
-}
+const createMessage = [
+  validateUser,
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).render("createUser", {
+        errors: errors.array(),
+        message: { ...req.body },
+      })
+    }
+    const { user, text } = matchedData(req)
+    await db.insertMessage({ user, text })
+    res.redirect("/")
+  },
+]
 
 export { getIndex, getMessageById, getNew, createMessage }
