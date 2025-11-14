@@ -22,7 +22,7 @@
               name="user"
               type="text"
               placeholder="Enter your name"
-              value="<%= message?.user %>"
+              value="<%= typeof message !== "undefined" ? message.user : "" %>"
             />
             <%- include("partials/errors.ejs", { field: "user"}) %>
           </div>
@@ -34,7 +34,7 @@
               id="text"
               name="text"
               rows="6"
-            ><%= message?.text %></textarea>
+            ><%= typeof message !== "undefined" ? message.text : "" %></textarea>
             <%- include("partials/errors.ejs", { field: "text"}) %>
           </div>
           <button type="submit" class="btn">Submit</button>

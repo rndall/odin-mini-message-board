@@ -68,6 +68,7 @@ const createMessage = [
     }
     const { user, text } = matchedData(req)
     await db.insertMessage({ user, text })
+    res.locals.details = true
     res.redirect("/")
   },
 ]
